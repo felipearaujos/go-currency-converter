@@ -7,15 +7,12 @@ import (
 	"net/http"
 	"strings"
 
-	_ "github.com/felipearaujos/go.currency.convert/docs"
 	"github.com/felipearaujos/go.currency.convert/service"
 	"github.com/labstack/echo"
-	"github.com/swaggo/echo-swagger"
 )
 
 func MakeHandlers() {
 	e := echo.New()
-	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.GET("/", healthCheck)
 	e.GET("/quotes", listAllCoinsAvaliableCoins)
 
@@ -27,15 +24,6 @@ func healthCheck(c echo.Context) error {
 	return c.JSON(http.StatusOK, "OK")
 }
 
-// @Title Get Users Information
-// @Description Get Users Information
-// @Accept json
-// @Param userId path int true &quot;User ID&quot;
-// @Success 200 {object} string &quot;Success&quot;
-// @Failure 401 {object} string &quot;Access denied&quot;
-// @Failure 404 {object} string &quot;Not Found&quot;
-// @Resource /users
-// @Router /v1/users/:userId.json [get]
 func listAllCoinsAvaliableCoins(c echo.Context) error {
 	currencyAndCoinsResponse := services.ListAllCoinsAvaliableCoinsAndCurrency()
 
@@ -47,13 +35,6 @@ func listAllCoinsAvaliableCoins(c echo.Context) error {
 	return c.JSON(http.StatusOK, keys)
 }
 
-// @title currency.converter
-// @version 1.0
-
-// @contact.name Araujo
-// @contact.email support@swagger.io
-
-// @BasePath /v1
 func main() {
 	MakeHandlers()
 }
