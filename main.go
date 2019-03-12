@@ -7,12 +7,13 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/felipearaujos/go.currency.convert/service"
 	"github.com/labstack/echo"
-	"github.com/felipearaujos/go.currency.convert/services"
 )
 
 func MakeHandlers() {
 	e := echo.New()
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.GET("/", healthCheck)
 	e.GET("/quotes", listAllCoinsAvaliableCoins)
 
@@ -25,7 +26,7 @@ func healthCheck(c echo.Context) error {
 }
 
 func listAllCoinsAvaliableCoins(c echo.Context) error {
-	currencyAndCoinsResponse := ListAllCoinsAvaliableCoinsAndCurrency()
+	currencyAndCoinsResponse := services.ListAllCoinsAvaliableCoinsAndCurrency()
 
 	keys := make([]string, 0, len(currencyAndCoinsResponse.Quotes))
 	for k := range currencyAndCoinsResponse.Quotes {
