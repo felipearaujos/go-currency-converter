@@ -7,13 +7,15 @@ import (
 	"net/http"
 	"strings"
 
+	_ "github.com/felipearaujos/go.currency.convert/docs"
 	"github.com/felipearaujos/go.currency.convert/service"
 	"github.com/labstack/echo"
+	"github.com/swaggo/echo-swagger"
 )
 
 func MakeHandlers() {
 	e := echo.New()
-	e.GET("/swagger/*", echoSwagger.WrapHandler)
+	e.GET("/swagger", echoSwagger.WrapHandler)
 	e.GET("/", healthCheck)
 	e.GET("/quotes", listAllCoinsAvaliableCoins)
 
@@ -36,6 +38,20 @@ func listAllCoinsAvaliableCoins(c echo.Context) error {
 	return c.JSON(http.StatusOK, keys)
 }
 
+// @title Swagger Example API
+// @version 1.0
+// @description This is a sample server Petstore server.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host petstore.swagger.io
+// @BasePath /v2
 func main() {
 	MakeHandlers()
 }
