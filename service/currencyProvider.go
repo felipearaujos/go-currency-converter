@@ -8,9 +8,7 @@ import (
 	"net/http"
 )
 
-type QuoteResponse struct {
-	Quotes map[string]float64 `json:"quotes"`
-}
+
 
 func ListAllCoinsAvaliableCoinsAndCurrency() QuoteResponse {
 	url := "http://www.apilayer.net/api/live?access_key=5f6b1096c7a12c66227a659e438509cc"
