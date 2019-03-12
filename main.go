@@ -27,6 +27,15 @@ func healthCheck(c echo.Context) error {
 	return c.JSON(http.StatusOK, "OK")
 }
 
+// @Title Get Users Information
+// @Description Get Users Information
+// @Accept json
+// @Param userId path int true &quot;User ID&quot;
+// @Success 200 {object} string &quot;Success&quot;
+// @Failure 401 {object} string &quot;Access denied&quot;
+// @Failure 404 {object} string &quot;Not Found&quot;
+// @Resource /users
+// @Router /v1/users/:userId.json [get]
 func listAllCoinsAvaliableCoins(c echo.Context) error {
 	currencyAndCoinsResponse := services.ListAllCoinsAvaliableCoinsAndCurrency()
 
