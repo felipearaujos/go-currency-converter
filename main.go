@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/labstack/echo"
+	x "github.com/felipearaujos/go.currency.convert/service"
 )
 
 func MakeHandlers() {
@@ -24,7 +25,8 @@ func healthCheck(c echo.Context) error {
 }
 
 func listAllCoinsAvaliableCoins(c echo.Context) error {
-	currencyAndCoinsResponse := listAllCoinsAvaliableCoinsAndCurrency()
+	x.QuoteResponse
+	currencyAndCoinsResponse := x.listAllCoinsAvaliableCoinsAndCurrency()
 
 	keys := make([]string, 0, len(currencyAndCoinsResponse.Quotes))
 	for k := range currencyAndCoinsResponse.Quotes {
