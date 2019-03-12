@@ -1,4 +1,4 @@
-package service
+package main
 
 import (
 	"encoding/json"
@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	"github.com/felipearaujos/go.currency.convert/models"
 )
 
-
-
-func ListAllCoinsAvaliableCoinsAndCurrency() QuoteResponse {
+func ListAllCoinsAvaliableCoinsAndCurrency() models.QuoteResponse {
 	url := "http://www.apilayer.net/api/live?access_key=5f6b1096c7a12c66227a659e438509cc"
 
 	response, err := http.Get(url)
@@ -24,7 +24,7 @@ func ListAllCoinsAvaliableCoinsAndCurrency() QuoteResponse {
 		log.Fatal(err)
 	}
 
-	var quoteRespose QuoteResponse
+	var quoteRespose models.QuoteResponse
 	err = json.Unmarshal(responseData, &quoteRespose)
 
 	return quoteRespose
