@@ -1,10 +1,12 @@
-basePath: '{{.BasePath}}'
+basePath: /v1
 host: '{{.Host}}'
 info:
-  contact: {}
+  contact:
+    email: support@swagger.io
+    name: Araujo
   description: '{{.Description}}'
   license: {}
-  title: '{{.Title}}'
-  version: '{{.Version}}'
+  title: currency.converter
+  version: "1.0"
 paths: {}
 swagger: "2.0"

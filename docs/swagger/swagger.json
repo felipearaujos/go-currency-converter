@@ -2,12 +2,15 @@
     "swagger": "2.0",
     "info": {
         "description": "{{.Description}}",
-        "title": "{{.Title}}",
-        "contact": {},
+        "title": "currency.converter",
+        "contact": {
+            "name": "Araujo",
+            "email": "support@swagger.io"
+        },
         "license": {},
-        "version": "{{.Version}}"
+        "version": "1.0"
     },
     "host": "{{.Host}}",
-    "basePath": "{{.BasePath}}",
+    "basePath": "/v1",
     "paths": {}
 }
