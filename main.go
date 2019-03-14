@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/felipearaujos/go.currency.convert/service"
+	"github.com/felipearaujos/go.currency.convert/repository"
 	"github.com/labstack/echo"
 )
 
@@ -25,6 +25,17 @@ func healthCheck(c echo.Context) error {
 }
 
 func listAllCoinsAvaliableCoins(c echo.Context) error {
+	currencyAndCoinsResponse := repository.ListAllCoinsAvaliableCoinsAndCurrency()
+
+	keys := make([]string, 0, len(currencyAndCoinsResponse.Quotes))
+	for k := range currencyAndCoinsResponse.Quotes {
+		keys = append(keys, strings.Replace(k, "USD", "", -1))
+	}
+
+	return c.JSON(http.StatusOK, keys)
+}
+
+func list(c echo.Context) error {
 	currencyAndCoinsResponse := services.ListAllCoinsAvaliableCoinsAndCurrency()
 
 	keys := make([]string, 0, len(currencyAndCoinsResponse.Quotes))
