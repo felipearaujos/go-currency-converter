@@ -11,7 +11,7 @@ import (
 )
 
 func ListAllCoinsAvaliableCoinsAndCurrency() models.QuoteResponse {
-	url := "http://www.apilayer.net/api/live?access_key=5f6b1096c7a12c66227a659e438509cc"
+	url := "http://www.apilayer.net/api/live?access_key="
 
 	response, err := http.Get(url)
 
